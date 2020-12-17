@@ -26,7 +26,20 @@ Para verificá-lo pode se utilizar um compilador online, inclusive deixe esse co
 https://onlinegdb.com/5F-IsV7Ei , basta dar "Run".
 
 //Questão 4
+sqlite : 
 
+Select * from (select Nome, Nota, Valor from Alunos
+inner join Notas on (Valor >= Valor_Min and Valor <= Valor_Max)
+where Nota >= 8
+order by Nota desc, Nome) as s1
+union ALL
+Select * From (select Null, Nota, Valor from Alunos
+inner join Notas on (Valor >= Valor_Min and Valor <= Valor_Max)
+where Nota < 8
+order by Nota desc, Valor) as s2
+
+Para verificá-lo pode se utilizar uma ide de sql online, inclusive deixe esse codigo salvo em um link compartilhável
+https://sqliteonline.com/#fiddle=a8c165559c07b770741f157b6f8b604b89698de9a3ebdae9958393598c5d2fbc, basta dar "Run".
 
 //Questão 5
 - resposta: polimorfismo pois as classes B e C derivam de A, tem comportamentos diferentes mas aos olhos do metodo analisado, elas são A. Dessa forma é possivel deixar o código preparado para futuras classes que derivam de A.
